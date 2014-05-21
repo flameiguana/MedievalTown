@@ -57,12 +57,14 @@ public class PlayerController : MonoBehaviour {
 			else if(wingState == WingState.Flapping)
 			{
 				wantGlide = true;
+				animator.SetBool("Gliding", true);
 			}
 		}
 		else if(wantGlide)
 		{
 			//Player no longer wants to be gliding, since button was released
 			wantGlide = false;
+			animator.SetBool("Gliding", false);
 			if(wingState == WingState.Gliding){
 				rigidbody2D.drag = NORMAL_DRAG;
 				wingState = WingState.Resting;

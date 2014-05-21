@@ -540,7 +540,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: c40b1ae20ad3edf4e9e14646cc2ed97a, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 0
-  m_AnimatePhysics: 1
+  m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!212 &1502882774
 SpriteRenderer:
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b3276ae43d69e4a8d7200ac9b06661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FLAP_FORCE: 400
+  FLAP_FORCE: 420
   NORMAL_DRAG: .699999988
   wingState: 1
 --- !u!1 &1955774062
