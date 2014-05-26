@@ -41,3 +41,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Buildings
+    userID: 1
+    uniqueID: 1461838763
+    locked: 0
+  - name: People
+    userID: 2
+    uniqueID: 1974292997
+    locked: 0

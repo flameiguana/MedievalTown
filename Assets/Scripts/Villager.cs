@@ -16,11 +16,18 @@ public class Villager : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		animator.SetBool("Panic", true);
+		if(collider.tag == "Player")
+		{
+			animator.SetBool("Panic", true);
+		}
+
 	}
 
-	void OnTriggerExit2D()
+	void OnTriggerExit2D(Collider2D collider)
 	{
-
+		if(collider.tag == "Player")
+		{
+			animator.SetBool("Panic", false);
+		}
 	}
 }
