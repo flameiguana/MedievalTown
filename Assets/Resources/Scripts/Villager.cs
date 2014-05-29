@@ -5,15 +5,25 @@ public class Villager : MonoBehaviour {
 
 	private Animator animator;
 	[SerializeField] private float explodeSpeed = 10f;
+	[SerializeField] private float walkSpeed = 1f;
+	[SerializeField] private float runSpeed = 3f;
 	[SerializeField] private GameObject deathAnimation;
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		animator = GetComponent<Animator>();
+	}
+
+	void Start() {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void FixedUpdate() {
+		executeBehavior(Time.deltaTime); // Placeholder for AI
 	}
 
 	void OnTriggerEnter2D(Collider2D collider)
@@ -30,6 +40,10 @@ public class Villager : MonoBehaviour {
 		if(collider.tag == "Player")
 		{
 			animator.SetBool("Panic", false);
+		} else if (collider.tag == "Nest") {
+			if (transform.parent == null) {
+				Destroy(gameObject);
+			}
 		}
 	}
 
@@ -41,5 +55,24 @@ public class Villager : MonoBehaviour {
 
 	void explode(){
 
+	}
+
+	private void executeBehavior(float timeDiff) {
+		if (rigidbody2D.velocity.y < 0.1f) {
+			if (animator.GetBool("Panic")) {
+				if (GameObject.Find("Wessbat").transform.position.x > transform.position.x) {
+					transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+				} else {
+					transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+				}
+				transform.Translate(-runSpeed * timeDiff, 0f, 0f);
+			} else {
+				float rand = Random.Range(0f, 1f);
+				if (rand > 0.993f) {
+					transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y + 180f, 0f);
+				}
+				transform.Translate(-walkSpeed * timeDiff, 0f, 0f);
+			}
+		}
 	}
 }
