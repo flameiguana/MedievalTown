@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: peasant
+  m_Name: MayorController
   serializedVersion: 2
   m_AnimatorParameters:
   - m_Name: Panic
@@ -71,7 +71,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: b15dfb07951ee25449580535579a209e, type: 2}
+  - {fileID: 7400000, guid: 3211887e033ab94409990eaa81d85288, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: -264, y: 96, z: 0}
   m_IKOnFeet: 0
@@ -107,13 +107,13 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110227775}
-      second:
-      - {fileID: 110100000}
-    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110124547}
+    data:
+      first: {fileID: 110227775}
+      second:
+      - {fileID: 110100000}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: -60, y: -72, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
