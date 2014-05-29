@@ -12,7 +12,6 @@ GameObject:
   - 92: {fileID: 9200000}
   - 124: {fileID: 12400000}
   - 81: {fileID: 8100000}
-  - 111: {fileID: 11100000}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -60,8 +59,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: .0463517755, y: .486693859, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 400000}
   m_Father: {fileID: 0}
@@ -74,8 +73,8 @@ Camera:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: .148897052, g: .447717965, b: .595588207, a: .0196078438}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: .148897052, g: .447717965, b: .595588207, a: .0705882385}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -105,7 +104,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_Mass: 1
-  m_LinearDrag: .699999988
+  m_LinearDrag: .649999976
   m_AngularDrag: .0500000007
   m_GravityScale: 1
   m_FixedAngle: 1
@@ -152,21 +151,6 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
---- !u!111 &11100000
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 656771f31c2f04a469105a4b190ba362, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 656771f31c2f04a469105a4b190ba362, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,8 +162,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b3276ae43d69e4a8d7200ac9b06661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FLAP_FORCE: 420
-  NORMAL_DRAG: .699999988
+  FLAP_FORCE: 550
+  NORMAL_DRAG: .649999976
   wingState: 1
 --- !u!114 &11400002
 MonoBehaviour:
@@ -211,7 +195,7 @@ SpriteRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 1414387951, guid: ea19f7b8ba84ff64ba0b4409172f9f49, type: 3}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

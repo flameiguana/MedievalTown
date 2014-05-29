@@ -6,7 +6,7 @@ SubstanceImporter:
   - serializedVersion: 12
     name: SpritesDiffuseMaterial
     prototypeName: Bitmap2Material2
-    shader: {fileID: 10800, guid: 0000000000000000f000000000000000, type: 0}
+    shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
     inputs:
     - name: $outputsize
       value:
