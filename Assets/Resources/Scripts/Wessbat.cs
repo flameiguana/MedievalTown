@@ -12,6 +12,9 @@ public class Wessbat : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
 		}
+		if (Input.GetKeyDown(KeyCode.S)) {
+			Kill();
+		}
 		//control scheme goes here
 	}
 
@@ -48,7 +51,15 @@ public class Wessbat : MonoBehaviour {
 		Utility.doThis d = () => {
 			droppedObject.layer = LayerMask.NameToLayer ("Enemy");
 		};
-		StartCoroutine(Utility.wait (1f, d));
+		if (droppedObject != null)
+			StartCoroutine(Utility.wait (1f, d));
 		pickedUp = null;
+	}
+
+	private void Kill() { // Kill the villager if one is currently held
+		if (pickedUp == null)
+			return;
+		Destroy(pickedUp);
+		Debug.Log("PEW PEW PEW");
 	}
 }

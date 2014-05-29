@@ -94,6 +94,10 @@ public class PlayerController : MonoBehaviour {
 			wingState = WingState.Resting;
 		}
 	}
+
+	public bool isFacingRight() {
+		return facingRight;
+	}
 }
 
 /*
