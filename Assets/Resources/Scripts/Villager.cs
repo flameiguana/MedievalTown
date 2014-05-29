@@ -5,7 +5,7 @@ public class Villager : MonoBehaviour {
 
 	private Animator animator;
 	[SerializeField] private float explodeSpeed = 10f;
-	[SerializeField] private GameObject deathAnimation;
+	[SerializeField] private GameObject deathSplatter;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -34,12 +34,13 @@ public class Villager : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collide){
-		if (collide.relativeVelocity.magnitude < explodeSpeed) {
+		if (collide.relativeVelocity.magnitude > explodeSpeed) {
 			explode();
 		}
 	}
 
 	void explode(){
-
+		Instantiate (deathSplatter, gameObject.transform.position, Quaternion.identity);
+		Destroy (gameObject);
 	}
 }

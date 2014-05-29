@@ -9,7 +9,7 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.F)) {
+		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
 		}
 		//control scheme goes here
@@ -18,7 +18,7 @@ public class Wessbat : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D target){
 		switch (target.gameObject.layer) {
 		case 8:							//Enemy layer
-			if(Input.GetKey (KeyCode.E))
+			if(Input.GetKey (KeyCode.LeftShift))
 				PickUp (target.gameObject);
 			break;
 		default:
@@ -35,8 +35,6 @@ public class Wessbat : MonoBehaviour {
 		joint.distance = 0.01f;
 		joint.anchor = new Vector2 (0, 1);	//inline anchor, will need to specify per pickupable object in future
 		target.transform.parent = gameObject.transform;
-		//target.rigidbody2D.fixedAngle = true;
-		//target.collider2D.enabled = false;
 		pickedUp = target;
 		target.layer = LayerMask.NameToLayer ("Picked Up Object");
 	}
@@ -46,8 +44,6 @@ public class Wessbat : MonoBehaviour {
 			return;
 		pickedUp.transform.parent = null;
 		Destroy (pickedUp.GetComponent<SpringJoint2D> ());
-		//pickedUp.rigidbody2D.fixedAngle = false;
-		//pickedUp.collider2D.enabled = true;
 		GameObject droppedObject = pickedUp;
 		Utility.doThis d = () => {
 			droppedObject.layer = LayerMask.NameToLayer ("Enemy");

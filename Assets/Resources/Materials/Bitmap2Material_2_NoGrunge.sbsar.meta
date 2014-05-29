@@ -3,10 +3,10 @@ guid: ea19f7b8ba84ff64ba0b4409172f9f49
 SubstanceImporter:
   serializedVersion: 5
   materialInstances:
-  - serializedVersion: 10
-    name: Bitmap2Material2
+  - serializedVersion: 12
+    name: SpritesDiffuseMaterial
     prototypeName: Bitmap2Material2
-    shaderName: Bumped Specular
+    shader: {fileID: 10800, guid: 0000000000000000f000000000000000, type: 0}
     inputs:
     - name: $outputsize
       value:
@@ -481,6 +481,7 @@ SubstanceImporter:
       serializedVersion: 5
       offset: {x: 0, y: 0}
       scale: {x: 1, y: 1}
+      generateMipmaps: 1
       generateAllOutputs: 0
       animationUpdateRate: 0
     materialProperties:
@@ -493,14 +494,11 @@ SubstanceImporter:
             texture: {instanceID: 0}
             scale: {x: 1, y: 1}
             offset: {x: 0, y: 0}
+      floats:
         data:
           first:
-            name: _BumpMap
-          second:
-            texture: {instanceID: 0}
-            scale: {x: 1, y: 1}
-            offset: {x: 0, y: 0}
-      floats:
+            name: PixelSnap
+          second: 0
         data:
           first:
             name: _Shininess
@@ -515,21 +513,26 @@ SubstanceImporter:
             name: _SpecColor
           second: {r: .5, g: .5, b: .5, a: 1}
     textureParameters:
-    - name: Bitmap2Material2_Diffuse
+    - name: SpritesDiffuseMaterial_Diffuse
       alphaSource: 5
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Bitmap2Material2_Specular
+    - name: SpritesDiffuseMaterial_Specular
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
-    - name: Bitmap2Material2_Normal
+    - name: SpritesDiffuseMaterial_Normal
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
+    textureAssignments:
+    - shaderProp:
+        name: _MainTex
+      material: {instanceID: 0}
+      baseUID: 2264283043
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
