@@ -32,13 +32,13 @@ public class Wessbat : MonoBehaviour {
 	void PickUp(GameObject target){		//Pick up the object
 		if (pickedUp != null)
 			return;
+		else pickedUp = target;
 		SpringJoint2D joint = target.AddComponent<SpringJoint2D> ();
 		joint.connectedBody = rigidbody2D;
 		joint.frequency = 20f;
 		joint.distance = 0.01f;
 		joint.anchor = new Vector2 (0, 1);	//inline anchor, will need to specify per pickupable object in future
 		target.transform.parent = gameObject.transform;
-		pickedUp = target;
 		target.layer = LayerMask.NameToLayer ("Picked Up Object");
 	}
 

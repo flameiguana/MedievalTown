@@ -51,7 +51,7 @@ public class Villager : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D collide){
-		if (collide.relativeVelocity.magnitude > explodeSpeed) {
+		if (Mathf.Abs (collide.relativeVelocity.y) > explodeSpeed) {
 			explode();
 		}
 	}
@@ -62,20 +62,21 @@ public class Villager : MonoBehaviour {
 	}
 
 	private void executeBehavior(float timeDiff) {
-		if (rigidbody2D.velocity.y < 0.1f) {
+		if(Physics2D.Raycast(transform.position, new Vector2(0,-1), collider2D.bounds.size.y * 0.7f, 1 << 11).collider != null){
 			if (animator.GetBool("Panic")) {
 				if (GameObject.Find("Wessbat").transform.position.x > transform.position.x) {
 					transform.localEulerAngles = new Vector3(0f, 0f, 0f);
+					rigidbody2D.velocity = new Vector2(-runSpeed, rigidbody2D.velocity.y);
 				} else {
 					transform.localEulerAngles = new Vector3(0f, 180f, 0f);
+					rigidbody2D.velocity = new Vector2(runSpeed, rigidbody2D.velocity.y);
 				}
-				transform.rigidbody2D.velocity += new Vector2(runSpeed, 0);
 			} else {
 				float rand = Random.Range(0f, 1f);
 				if (rand > 0.993f) {
 					transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y + 180f, 0f);
 				}
-				transform.Translate(-walkSpeed * timeDiff, 0f, 0f);
+				rigidbody2D.velocity = new Vector2(-walkSpeed, rigidbody2D.velocity.y);
 			}
 		}
 	}
