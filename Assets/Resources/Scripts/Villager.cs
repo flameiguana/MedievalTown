@@ -56,7 +56,7 @@ public class Villager : MonoBehaviour {
 		}
 	}
 
-	void explode(){
+	public void explode(){
 		Instantiate (deathSplatter, gameObject.transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}
@@ -69,7 +69,7 @@ public class Villager : MonoBehaviour {
 				} else {
 					transform.localEulerAngles = new Vector3(0f, 180f, 0f);
 				}
-				transform.Translate(-runSpeed * timeDiff, 0f, 0f);
+				transform.rigidbody2D.velocity += new Vector2(runSpeed, 0);
 			} else {
 				float rand = Random.Range(0f, 1f);
 				if (rand > 0.993f) {

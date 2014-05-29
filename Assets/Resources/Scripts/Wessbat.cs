@@ -12,9 +12,9 @@ public class Wessbat : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
 		}
-		if (Input.GetKeyDown(KeyCode.S)) {
+		/*if (Input.GetKeyDown(KeyCode.S)) {
 			Kill();
-		}
+		}*/
 		//control scheme goes here
 	}
 
@@ -57,9 +57,9 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	private void Kill() { // Kill the villager if one is currently held
-		if (pickedUp == null)
-			return;
-		Destroy(pickedUp);
-		Debug.Log("PEW PEW PEW");
+		if (pickedUp.GetComponent<Villager>()){
+			Drop ();
+			pickedUp.GetComponent<Villager>().explode();
+		}
 	}
 }
