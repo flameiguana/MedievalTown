@@ -4,6 +4,8 @@ using System.Collections;
 public class Villager : MonoBehaviour {
 
 	private Animator animator;
+	[SerializeField] private float explodeSpeed = 10f;
+	[SerializeField] private GameObject deathAnimation;
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
@@ -29,5 +31,15 @@ public class Villager : MonoBehaviour {
 		{
 			animator.SetBool("Panic", false);
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D collide){
+		if (collide.relativeVelocity.magnitude < explodeSpeed) {
+			explode();
+		}
+	}
+
+	void explode(){
+
 	}
 }

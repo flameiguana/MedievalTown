@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!50 &5000000
 Rigidbody2D:
   m_ObjectHideFlags: 1
@@ -41,7 +42,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: .300000012
   m_AngularDrag: .0500000007
-  m_GravityScale: .400000006
+  m_GravityScale: .5
   m_FixedAngle: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -71,7 +72,7 @@ BoxCollider2D:
   m_Center: {x: -.0599999987, y: -.119999997}
 --- !u!95 &9500000
 Animator:
-  serializedVersion: 2
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -80,8 +81,8 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1addcbcf746df794dbd9fa3245781cc5, type: 2}
   m_CullingMode: 0
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
-  m_AnimatePhysics: 0
   m_HasTransformHierarchy: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -94,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255e3c2d1dfb9c24cb8ee812ac50c47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explodeSpeed: 10
+  deathAnimation: {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -112,9 +115,8 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 2
-  m_SortingOrder: 0
   m_SortingLayerID: 1974292997
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f90acd6a1163016459c59402ea1d24d3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
