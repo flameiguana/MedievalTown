@@ -270,8 +270,8 @@ Transform:
   m_PrefabInternal: {fileID: 703629576}
   m_GameObject: {fileID: 103175061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
+  m_LocalScale: {x: 2, y: 2, z: 1.5}
   m_Children: []
   m_Father: {fileID: 267326228}
   m_RootOrder: 0
@@ -874,29 +874,29 @@ GameObject:
   - 4: {fileID: 267326228}
   - 212: {fileID: 267326227}
   - 95: {fileID: 267326226}
+  - 114: {fileID: 267326230}
   - 114: {fileID: 267326225}
   - 50: {fileID: 267326224}
-  - 58: {fileID: 267326223}
-  - 114: {fileID: 267326230}
-  m_Layer: 10
+  - 61: {fileID: 267326223}
+  m_Layer: 0
   m_Name: Wessbat
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!58 &267326223
-CircleCollider2D:
+--- !u!61 &267326223
+BoxCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 5800000, guid: 44ad76e8cb61df44f873357abc6f3658,
+  m_PrefabParentObject: {fileID: 6100000, guid: 44ad76e8cb61df44f873357abc6f3658,
     type: 2}
   m_PrefabInternal: {fileID: 703629576}
   m_GameObject: {fileID: 267326222}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .370000005
-  m_Center: {x: 0, y: -.180000007}
+  m_Size: {x: 3.05999994, y: .939999998}
+  m_Center: {x: -.529999971, y: 0}
 --- !u!50 &267326224
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -922,12 +922,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 267326222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03b3276ae43d69e4a8d7200ac9b06661, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a280cdd552173948ab979bec637a29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FLAP_FORCE: 550
-  NORMAL_DRAG: .649999976
-  wingState: 1
 --- !u!95 &267326226
 Animator:
   serializedVersion: 3
@@ -963,8 +960,8 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: dd143b18443f8f346a3566d30901c1b4, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: ad8983e89916e7842994fd002580e927, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &267326228
 Transform:
@@ -974,7 +971,7 @@ Transform:
   m_GameObject: {fileID: 267326222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .0463517755, y: .486693859, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 103175066}
   m_Father: {fileID: 0}
@@ -988,9 +985,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 267326222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a280cdd552173948ab979bec637a29a, type: 3}
+  m_Script: {fileID: 11500000, guid: 03b3276ae43d69e4a8d7200ac9b06661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FLAP_FORCE: 550
+  NORMAL_DRAG: .649999976
+  wingState: 1
 --- !u!1001 &267479487
 Prefab:
   m_ObjectHideFlags: 0

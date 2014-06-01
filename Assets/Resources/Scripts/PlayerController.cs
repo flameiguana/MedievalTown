@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 		animator = this.GetComponent<Animator>();
 	}
 
-	bool facingRight = true;
+	bool facingRight = false;
 
 	void DetermineDirection(float direction)
 	{
@@ -82,6 +82,7 @@ public class PlayerController : MonoBehaviour {
 		rigidbody2D.velocity = new Vector2(horizontalInput * SIDE_SPEED, rigidbody2D.velocity.y);
 	}
 
+	//Called by animation.
 	public void FlapAnimationFinished()
 	{
 		if(wantGlide)
