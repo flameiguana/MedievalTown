@@ -22,7 +22,8 @@ public class Villager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(Input.GetKeyDown(KeyCode.S))
+			animator.SetTrigger("Swing");
 	}
 
 	void FixedUpdate() {
