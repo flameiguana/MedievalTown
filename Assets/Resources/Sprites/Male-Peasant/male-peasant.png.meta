@@ -50,7 +50,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1074
+        y: 1432
         width: 298
         height: 358
       alignment: 0
@@ -60,7 +60,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 716
+        y: 1074
         width: 298
         height: 358
       alignment: 0
@@ -70,13 +70,23 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 358
+        y: 716
         width: 298
         height: 358
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: male-peasant_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 358
+        width: 298
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: male-peasant_4
       rect:
         serializedVersion: 2
         x: 0

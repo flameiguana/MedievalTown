@@ -9,21 +9,35 @@ public class Villager : MonoBehaviour {
 	[SerializeField] private GameObject deathSplatter;
 	[SerializeField] private float walkSpeed = 1f;
 	[SerializeField] private float runSpeed = 3f;
+	[SerializeField] private SpriteRenderer bowRenderer;
 
+	//Not sure if we want this here.
+	public enum WeaponType
+	{
+		None,
+		Bow,
+		Sword
+	}
 
-	// Use this for initialization
+	public WeaponType weaponType;
+
 	void Awake () {
 		animator = GetComponent<Animator>();
 	}
 
 	void Start() {
-
+		//Shows staic bow behind villager. Note that this bow is different from the one
+		//in shoot animation, so it is disabled during that animation.
+		if(weaponType == WeaponType.Bow)
+			bowRenderer.enabled = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.S))
 			animator.SetTrigger("Swing");
+		else if(Input.GetKeyDown(KeyCode.B))
+			animator.SetTrigger("Shoot");
 	}
 
 	void FixedUpdate() {
