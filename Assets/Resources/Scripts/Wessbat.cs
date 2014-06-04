@@ -29,6 +29,13 @@ public class Wessbat : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D target) {
+		if (target.tag == "Worksheet") {
+			// Update worksheet total
+			Destroy(target.gameObject);
+		}
+	}
+
 	void PickUp(GameObject target){		//Pick up the object
 		if (pickedUp != null)
 			return;
