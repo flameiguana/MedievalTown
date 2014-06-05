@@ -39,7 +39,6 @@ public class Building : MonoBehaviour {
 	// Spawn a villager from the building
 	public void spawnVillager() {
 		float villagerSpawn = Random.Range(0f, 1f);
-		Debug.Log(villagerSpawn + " " + (float) (villagerProbabilities[0] + villagerProbabilities[1]));
 		Villager.WeaponType weapon;
 		//GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation);
 		if (villagerSpawn > villagerProbabilities[0] + villagerProbabilities[1] + villagerProbabilities[2])

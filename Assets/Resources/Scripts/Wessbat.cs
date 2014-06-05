@@ -20,7 +20,7 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	void Update () {
-		invincibility = Mathf.Min(invincibility - Time.deltaTime, 0f);
+		invincibility = Mathf.Max(invincibility - Time.deltaTime, 0f);
 		rigidbody2D.gravityScale = 1f + transform.position.y / weightScale;
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
@@ -29,6 +29,12 @@ public class Wessbat : MonoBehaviour {
 			Kill();
 		}
 		//control scheme goes here
+	}
+
+	// Using this garbage for now
+	void OnGUI() {
+		GUI.Box(new Rect(0f, 0f, 110f, 30f), "Health: " + curHealth);
+		GUI.Box(new Rect(Screen.width - 110f, 0f, 110f, 30f), "Worksheets: " + worksheets);
 	}
 
 	void OnCollisionStay2D(Collision2D target){
@@ -94,6 +100,7 @@ public class Wessbat : MonoBehaviour {
 	public void Damage(int dmg) {
 		if (invincibility <= 0f) {
 			curHealth -= dmg;
+			invincibility = invincibilityTimer;
 			if (curHealth <= 0)
 				Application.LoadLevel(Application.loadedLevel);
 		}
