@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Building : MonoBehaviour {
 	[SerializeField] private float spawnRate = 20f; // The rate (in seconds) at which a new villager spawns from the building.
-	[SerializeField] private float[] villagerProbabilities = {0.7f, 0.3f, 0f, 0f}; // The probability of each of the 3 types of villager spawning. The first is
+	[SerializeField] private float[] villagerProbabilities = {0.7f, 0.2f, 0.1f, 0f}; // The probability of each of the 3 types of villager spawning. The first is
 																			 // an unarmed villager, second is a villager with a sword, third is a villager
 																			 // with a bow, and fourth is a catapult.
 	[SerializeField] private float documentProbability = 0.2f;
@@ -32,8 +32,25 @@ public class Building : MonoBehaviour {
 	void FixedUpdate() {
 		spawnCD = Mathf.Max(0f, spawnCD - Time.deltaTime);
 		if (spawnCD <= 0f) {
-			GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation);
-			spawnCD = spawnRate;
+			spawnVillager();
 		}
+	}
+
+	// Spawn a villager from the building
+	public void spawnVillager() {
+		float villagerSpawn = Random.Range(0f, 1f);
+		Villager.WeaponType weapon;
+		//GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation);
+		if (villagerSpawn > villagerProbabilities[0] + villagerProbabilities[1] + villagerProbabilities[2])
+			weapon = Villager.WeaponType.None; // Until Catapult is in the game
+		else if (villagerSpawn > villagerProbabilities[0] + villagerProbabilities[1])
+			weapon = Villager.WeaponType.Bow;
+		else if (villagerSpawn > villagerProbabilities[0])
+			weapon = Villager.WeaponType.Sword;
+		else
+			weapon = Villager.WeaponType.None;
+		((GameObject) GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation)).GetComponent<Villager>().setWeapon(weapon);
+
+		spawnCD = spawnRate;
 	}
 }
