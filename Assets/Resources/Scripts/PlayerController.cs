@@ -3,7 +3,12 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	public float FLAP_FORCE;
+	[SerializeField] float FLAP_FORCE;
+	[SerializeField] int maxSpeed = 20;
+	[SerializeField] float SIDE_SPEED = 6f;
+	[SerializeField] float GLIDE_SPEED = 0.3f;
+	public float glideConstant = 2f;
+	public float NORMAL_DRAG;
 
 	public enum WingState
 	{
@@ -11,8 +16,6 @@ public class PlayerController : MonoBehaviour {
 		Resting,
 		Gliding
 	}
-
-	public float NORMAL_DRAG = .7f;
 
 	public WingState wingState = WingState.Resting;
 
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	float horizontalInput;
-	float SIDE_SPEED = 5f;
+
 	void Update()
 	{
 		if(Input.GetButton("Flap"))
@@ -79,7 +82,9 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		rigidbody2D.velocity = new Vector2(horizontalInput * SIDE_SPEED, rigidbody2D.velocity.y);
+		if(!wantGlide)
+			rigidbody2D.velocity += new Vector2(Mathf.Min (horizontalInput * SIDE_SPEED, maxSpeed), 0);
+		else rigidbody2D.velocity += new Vector2(Mathf.Min (horizontalInput * GLIDE_SPEED, maxSpeed), Mathf.Pow((Mathf.Abs (rigidbody2D.velocity.x) / glideConstant / maxSpeed), 2));
 	}
 
 	//Called by animation.
@@ -88,7 +93,7 @@ public class PlayerController : MonoBehaviour {
 		if(wantGlide)
 		{
 			wingState = WingState.Gliding;
-			rigidbody2D.drag = 7f;
+			rigidbody2D.drag = NORMAL_DRAG;
 		}
 		else
 		{

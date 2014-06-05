@@ -54,7 +54,7 @@ public class Wessbat : MonoBehaviour {
 		else pickedUp = target;
 		SpringJoint2D joint = target.AddComponent<SpringJoint2D> ();
 		joint.connectedBody = rigidbody2D;
-		joint.frequency = 20f;
+		joint.frequency = 10f;
 		joint.distance = 0.01f;
 		joint.anchor = new Vector2 (0, 1);	//inline anchor, will need to specify per pickupable object in future
 		target.transform.parent = gameObject.transform;
@@ -68,7 +68,8 @@ public class Wessbat : MonoBehaviour {
 		Destroy (pickedUp.GetComponent<SpringJoint2D> ());
 		GameObject droppedObject = pickedUp;
 		Utility.doThis d = () => {
-			droppedObject.layer = LayerMask.NameToLayer ("Enemy");
+			if (droppedObject != null)
+				droppedObject.layer = LayerMask.NameToLayer ("Enemy");
 		};
 		if (droppedObject != null)
 			StartCoroutine(Utility.wait (1f, d));
