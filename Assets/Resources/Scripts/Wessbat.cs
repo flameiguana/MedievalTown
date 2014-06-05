@@ -2,14 +2,17 @@
 using System.Collections;
 
 public class Wessbat : MonoBehaviour {
+	[SerializeField] float invincibilityTimer = 1f;
 	[SerializeField] int maxHealth = 10;
 	private int curHealth, worksheets;
 	private GameObject pickedUp = null; //object being held
+	private float invincibility;
 	[SerializeField] float weightScale = 25f;
 
 	void Awake() {
 		curHealth = maxHealth;
 		worksheets = 0;
+		invincibility = 0f;
 	}
 
 	void Start () {
@@ -17,6 +20,7 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	void Update () {
+		invincibility = Mathf.Min(invincibility - Time.deltaTime, 0f);
 		rigidbody2D.gravityScale = 1f + transform.position.y / weightScale;
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
@@ -87,8 +91,10 @@ public class Wessbat : MonoBehaviour {
 
 	// Deal damage to Wessbat.
 	public void Damage(int dmg) {
-		curHealth -= dmg;
-		if (curHealth <= 0)
-			Debug.Log("lol u ded");
+		if (invincibility <= 0f) {
+			curHealth -= dmg;
+			if (curHealth <= 0)
+				Application.LoadLevel(Application.loadedLevel);
+		}
 	}
 }

@@ -12,6 +12,7 @@ public class Villager : MonoBehaviour {
 	[SerializeField] private float activeRadius = 10f;
 	[SerializeField] private float swordCooldown = 2f;
 	[SerializeField] private float bowCooldown = 3f;
+	[SerializeField] private bool hasDoc = false;
 	private GameObject wessbat, arrow, worksheet;
 	private bool batNear = false;
 	private float swordTime, bowTime;
@@ -24,7 +25,7 @@ public class Villager : MonoBehaviour {
 		Sword
 	}
 
-	public WeaponType weaponType;
+	public WeaponType weaponType = WeaponType.None;
 
 	void Awake () {
 		animator = GetComponent<Animator>();
@@ -33,6 +34,12 @@ public class Villager : MonoBehaviour {
 		worksheet = Resources.Load<GameObject>("Prefabs/Document");
 		swordTime = 0f;
 		bowTime = 0f;
+		if (weaponType == WeaponType.Sword)
+			transform.Find("Sword").gameObject.SetActive(true);
+		else if (weaponType == WeaponType.Bow) {
+			transform.Find("Bow").gameObject.SetActive(true);
+			transform.Find("BowArms").gameObject.SetActive(true);
+		}
 	}
 
 	void Start() {
@@ -161,7 +168,7 @@ public class Villager : MonoBehaviour {
 				if (rand > 0.993f) {
 					transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y + 180f, 0f);
 				}
-				rigidbody2D.velocity = new Vector2(-walkSpeed, rigidbody2D.velocity.y);
+				rigidbody2D.velocity = new Vector2(-walkSpeed * Mathf.Cos(transform.localEulerAngles.y * Mathf.PI / 180f), rigidbody2D.velocity.y);
 			}
 		}
 	}
@@ -169,5 +176,15 @@ public class Villager : MonoBehaviour {
 	private void dropDoc() {
 		if (Random.Range(0f, 1f) > 0.8f)
 			GameObject.Instantiate(worksheet);
+	}
+
+	public void setWeapon(WeaponType weapon) {
+		weaponType = weapon;
+		if (weapon == WeaponType.Sword)
+			transform.Find("Sword").gameObject.SetActive(true);
+		else if (weapon == WeaponType.Bow) {
+			transform.Find("Bow").gameObject.SetActive(true);
+			transform.Find("BowArms").gameObject.SetActive(true);
+		}
 	}
 }
