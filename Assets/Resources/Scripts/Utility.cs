@@ -8,4 +8,7 @@ public static class Utility {
 		yield return new WaitForSeconds(t);
 		d ();
 	}
+
+	public static int worksheets = 0;
+	public static int kills = 0;
 }

@@ -34,11 +34,14 @@ public class Wessbat : MonoBehaviour {
 	// Using this garbage for now
 	void OnGUI() {
 		if (curHealth == 0) {
-			KongregateAPI.instance.SubmitStats("Worksheets", worksheets);
+			KongregateAPI.instance.SubmitStats("Worksheets", Utility.worksheets);
+			KongregateAPI.instance.SubmitStats ("Kills", Utility.kills);
+			Utility.worksheets = 0;
+			Utility.kills = 0;
 			Application.LoadLevel (0);
 		}
 		GUI.Box(new Rect(0f, 0f, 110f, 30f), "Health: " + curHealth);
-		GUI.Box(new Rect(Screen.width - 110f, 0f, 110f, 30f), "Worksheets: " + worksheets);
+		GUI.Box(new Rect(Screen.width - 110f, 0f, 110f, 30f), "Worksheets: " + Utility.worksheets);
 	}
 
 	void OnCollisionStay2D(Collision2D target){
@@ -56,7 +59,7 @@ public class Wessbat : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D target) {
 		if (target.tag == "Worksheet") {
-			worksheets++;
+			Utility.worksheets++;
 			Destroy(target.gameObject);
 		} else if (target.tag == "Sword")
 			Damage(1);

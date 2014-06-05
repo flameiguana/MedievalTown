@@ -25,6 +25,10 @@ public class Villager : MonoBehaviour {
 		Sword
 	}
 
+	void OnDestroy(){
+		Utility.kills++;
+	}
+
 	public WeaponType weaponType = WeaponType.None;
 
 	void Awake () {
