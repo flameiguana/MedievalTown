@@ -6,6 +6,8 @@ TagManager:
   - Worksheet
   - Sword
   - 
+  - Nest
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -18,7 +20,7 @@ TagManager:
   User Layer 9: Picked Up Object
   User Layer 10: Wessbat
   User Layer 11: Ground
-  User Layer 12: Building
+  User Layer 12: Background
   User Layer 13: 
   User Layer 14: 
   User Layer 15: 
@@ -39,15 +41,11 @@ TagManager:
   User Layer 30: 
   User Layer 31: 
   m_SortingLayers:
-  - name: Buildings
+  - name: Background
     userID: 1
-    uniqueID: 1461838763
+    uniqueID: 1823353495
     locked: 0
   - name: Default
     userID: 0
     uniqueID: 0
-    locked: 0
-  - name: People
-    userID: 2
-    uniqueID: 1974292997
     locked: 0
