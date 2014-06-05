@@ -98,7 +98,7 @@ public class Villager : MonoBehaviour {
 	};
 
 	void OnCollisionEnter2D(Collision2D collide){
-		if (Mathf.Abs (collide.relativeVelocity.y) > explodeSpeed) {
+		if (Mathf.Abs (collide.relativeVelocity.magnitude) > explodeSpeed) {
 			explode();
 		}
 	}

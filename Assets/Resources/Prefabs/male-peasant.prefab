@@ -77,7 +77,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.11894226, y: -3.09024453, z: 0}
+  m_LocalPosition: {x: 25.0711403, y: 1.08839643, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 1
+  m_Mass: .5
   m_LinearDrag: .100000001
   m_AngularDrag: .0500000007
   m_GravityScale: .600000024
@@ -203,7 +203,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 033fb03da62ce3b46b6efa10d5897e2e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: .340000004, y: 1.14999998}
   m_Center: {x: -.0599999987, y: -.119999997}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 255e3c2d1dfb9c24cb8ee812ac50c47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeSpeed: 10
+  explodeSpeed: 12
   deathSplatter: {fileID: 100000, guid: 5baaf9bf002ab5344aca1bdd32f62a79, type: 2}
   walkSpeed: 1
   runSpeed: 3
@@ -240,7 +240,7 @@ MonoBehaviour:
   activeRadius: 10
   swordCooldown: 2
   bowCooldown: 3
-  weaponType: 1
+  weaponType: 2
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
