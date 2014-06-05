@@ -33,6 +33,10 @@ public class Wessbat : MonoBehaviour {
 
 	// Using this garbage for now
 	void OnGUI() {
+		if (curHealth == 0) {
+			KongregateAPI.instance.SubmitStats("Worksheets", worksheets);
+			Application.LoadLevel (0);
+		}
 		GUI.Box(new Rect(0f, 0f, 110f, 30f), "Health: " + curHealth);
 		GUI.Box(new Rect(Screen.width - 110f, 0f, 110f, 30f), "Worksheets: " + worksheets);
 	}
