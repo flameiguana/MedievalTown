@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultZoom: 6
+  maxZoom: 18
   ZoomYScalar: 2
 --- !u!1 &109450116
 GameObject:
@@ -1356,6 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a280cdd552173948ab979bec637a29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weightScale: 25
 --- !u!95 &267326226
 Animator:
   serializedVersion: 3
@@ -3081,6 +3083,10 @@ Prefab:
     - target: {fileID: 11400002, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}
       propertyPath: FLAP_FORCE
       value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}
+      propertyPath: weightScale
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6100000, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}

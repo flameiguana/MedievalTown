@@ -5,6 +5,7 @@ public class CameraScript : MonoBehaviour {
 
 	static Camera main;
 	[SerializeField] float defaultZoom = 6f;
+	[SerializeField] float maxZoom = 18f;
 	[SerializeField] float ZoomYScalar = 2f;
 
 	// Use this for initialization
@@ -15,5 +16,7 @@ public class CameraScript : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 		main.orthographicSize = defaultZoom + transform.position.y / ZoomYScalar;
+		if(main.orthographicSize > maxZoom)
+			main.orthographicSize = maxZoom;
 	}
 }
