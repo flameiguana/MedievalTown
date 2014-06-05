@@ -301,6 +301,7 @@ GameObject:
   - 92: {fileID: 103175064}
   - 124: {fileID: 103175063}
   - 81: {fileID: 103175062}
+  - 114: {fileID: 103175067}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -377,6 +378,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 267326228}
   m_RootOrder: 0
+--- !u!114 &103175067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 103175061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c595df9741c3734f83509aa7dd08d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultZoom: 6
+  maxZoom: 18
+  ZoomYScalar: 2
 --- !u!1 &109450116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a280cdd552173948ab979bec637a29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weightScale: 25
 --- !u!95 &267326226
 Animator:
   serializedVersion: 3
@@ -1405,7 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b3276ae43d69e4a8d7200ac9b06661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FLAP_FORCE: 550
+  FLAP_FORCE: 700
   NORMAL_DRAG: .649999976
   wingState: 1
 --- !u!1001 &267479487
@@ -3063,6 +3079,14 @@ Prefab:
     - target: {fileID: 100002, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}
+      propertyPath: FLAP_FORCE
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}
+      propertyPath: weightScale
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6100000, guid: 44ad76e8cb61df44f873357abc6f3658, type: 2}

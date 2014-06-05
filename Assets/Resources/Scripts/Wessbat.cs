@@ -5,6 +5,7 @@ public class Wessbat : MonoBehaviour {
 	[SerializeField] int maxHealth = 10;
 	private int curHealth, worksheets;
 	private GameObject pickedUp = null; //object being held
+	[SerializeField] float weightScale = 25f;
 
 	void Awake() {
 		curHealth = maxHealth;
@@ -16,12 +17,13 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	void Update () {
+		rigidbody2D.gravityScale = 1f + transform.position.y / weightScale;
 		if (Input.GetKeyUp (KeyCode.LeftShift)) {
 			Drop ();
 		}
-		/*if (Input.GetKeyDown(KeyCode.S)) {
+		if (Input.GetKeyDown(KeyCode.S)) {
 			Kill();
-		}*/
+		}
 		//control scheme goes here
 	}
 
@@ -74,9 +76,12 @@ public class Wessbat : MonoBehaviour {
 	}
 
 	private void Kill() { // Kill the villager if one is currently held
-		if (pickedUp.GetComponent<Villager>()){
+		if (pickedUp){
+			if(!pickedUp.GetComponent<Villager>())
+				return;
+			Villager killed = pickedUp.GetComponent<Villager>();
 			Drop ();
-			pickedUp.GetComponent<Villager>().explode();
+			killed.explode();
 		}
 	}
 
