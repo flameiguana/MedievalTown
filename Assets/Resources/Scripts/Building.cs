@@ -10,18 +10,18 @@ public class Building : MonoBehaviour {
 	[SerializeField] private float spawnX = 0f; // The local X positon where villagers will be spawned from.
 	[SerializeField] private float spawnY = 0f; // The local Y positon where villagers will be spawned from.
 	private float spawnCD; // The cooldown on spawning a new villager.
-	private GameObject unarmedVillager; // Unarmed villager prefab
-	private GameObject swordVillager; // Sword villager prefab
-	private GameObject bowVillager; // Bow villager prefab
-	private GameObject catapultVillager; // Catapult villager prefab
+	private GameObject villager; // Unarmed villager prefab
+	//private GameObject swordVillager; // Sword villager prefab
+	//private GameObject bowVillager; // Bow villager prefab
+	//private GameObject catapultVillager; // Catapult villager prefab
 
 	// Use this for initialization
 	void Start () {
 		spawnCD = spawnRate;
-		unarmedVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
-		swordVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
-		bowVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
-		catapultVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
+		villager = Resources.Load("Prefabs/male-peasant") as GameObject;
+		//swordVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
+		//bowVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
+		//catapultVillager = Resources.Load("Prefabs/male-peasant") as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +32,7 @@ public class Building : MonoBehaviour {
 	void FixedUpdate() {
 		spawnCD = Mathf.Max(0f, spawnCD - Time.deltaTime);
 		if (spawnCD <= 0f) {
-			GameObject.Instantiate(unarmedVillager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation);
+			GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation);
 			spawnCD = spawnRate;
 		}
 	}

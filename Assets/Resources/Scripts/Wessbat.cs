@@ -2,7 +2,14 @@
 using System.Collections;
 
 public class Wessbat : MonoBehaviour {
+	[SerializeField] int maxHealth = 10;
+	private int curHealth, worksheets;
 	private GameObject pickedUp = null; //object being held
+
+	void Awake() {
+		curHealth = maxHealth;
+		worksheets = 0;
+	}
 
 	void Start () {
 	
@@ -27,13 +34,16 @@ public class Wessbat : MonoBehaviour {
 		default:
 			break;
 		}
+		if (target.gameObject.tag == "Arrow")
+			Destroy(target.gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D target) {
 		if (target.tag == "Worksheet") {
-			// Update worksheet total
+			worksheets++;
 			Destroy(target.gameObject);
-		}
+		} else if (target.tag == "Sword")
+			Damage(1);
 	}
 
 	void PickUp(GameObject target){		//Pick up the object
@@ -68,5 +78,12 @@ public class Wessbat : MonoBehaviour {
 			Drop ();
 			pickedUp.GetComponent<Villager>().explode();
 		}
+	}
+
+	// Deal damage to Wessbat.
+	public void Damage(int dmg) {
+		curHealth -= dmg;
+		if (curHealth <= 0)
+			Debug.Log("lol u ded");
 	}
 }

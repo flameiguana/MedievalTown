@@ -145,12 +145,11 @@ public class Villager : MonoBehaviour {
 						}
 						if (!animator.GetBool("Shoot") && bowTime <= 0f) {
 							float ang = 180f / Mathf.PI * Mathf.Atan2(wessbat.transform.position.y - transform.position.y, wessbat.transform.position.x - transform.position.x);
-							Debug.Log(ang);
 							animator.SetTrigger("Shoot");
 							GameObject newArrow = ((GameObject)GameObject.Instantiate(arrow, new Vector2(transform.position.x + 0.5f * renderer.bounds.size.x * Mathf.Cos(ang * Mathf.PI / 180f),
 												    transform.position.y + 0.5f * renderer.bounds.size.y * Mathf.Sin(ang * Mathf.PI / 180f)), transform.rotation));
 							newArrow.transform.localEulerAngles = new Vector3(0f, 0f, -90f + ang);
-							newArrow.rigidbody2D.velocity = new Vector2(transform.localEulerAngles.y % -1 * 10f, 10f);
+							newArrow.rigidbody2D.velocity = 15f * new Vector2(Mathf.Cos(ang * Mathf.PI / 180f), Mathf.Sin(ang * Mathf.PI / 180f));
 							bowTime = bowCooldown;
 						}
 						break;
