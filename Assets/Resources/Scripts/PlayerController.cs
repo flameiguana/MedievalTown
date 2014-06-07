@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	public float glideConstant = 2f;
 	public float NORMAL_DRAG;
 
+	bool grounded;
+
 	public enum WingState
 	{
 		Flapping,
@@ -54,10 +56,11 @@ public class PlayerController : MonoBehaviour {
 				rigidbody2D.AddForce(Vector2.up * FLAP_FORCE);
 				wingState = WingState.Flapping;
 				animator.SetTrigger("Flapping");
+				SetGroundState(false);
 			}
 
 			//If the user is holding flap button while flap animation plays, we should glide
-			else if(wingState == WingState.Flapping)
+			else if(wingState == WingState.Flapping && !grounded)
 			{
 				wantGlide = true;
 				animator.SetBool("Gliding", true);
@@ -77,20 +80,46 @@ public class PlayerController : MonoBehaviour {
 		//Sideways movement
 		horizontalInput = Input.GetAxisRaw("Horizontal");
 		DetermineDirection(horizontalInput);
-
-	}
+	}	
 
 	void FixedUpdate()
 	{
+		if(grounded)
+			return;
 		if(!wantGlide)
 			rigidbody2D.velocity += new Vector2(Mathf.Min (horizontalInput * SIDE_SPEED, maxSpeed), 0);
 		else rigidbody2D.velocity += new Vector2(Mathf.Min (horizontalInput * GLIDE_SPEED, maxSpeed), Mathf.Pow((Mathf.Abs (rigidbody2D.velocity.x) / glideConstant / maxSpeed), 2));
 	}
 
+	void SetGroundState(bool grounded)
+	{
+		this.grounded = grounded;
+		animator.SetBool("Grounded", grounded);
+
+		if(grounded){
+			animator.SetBool("Gliding", false);
+			wingState = WingState.Resting;
+		}
+			
+	}
+
+	const int GroundLayer = 11;
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if(collision.gameObject.layer == GroundLayer)
+			SetGroundState(true);
+	}
+
+	void OnCollisioneExit2D(Collision2D collision)
+	{
+		if(collision.gameObject.layer == GroundLayer)
+			SetGroundState(false);
+	}
+
 	//Called by animation.
 	public void FlapAnimationFinished()
 	{
-		if(wantGlide)
+		if(wantGlide && !grounded)
 		{
 			wingState = WingState.Gliding;
 			rigidbody2D.drag = NORMAL_DRAG;
