@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] int maxSpeed = 20;
 	[SerializeField] float SIDE_SPEED = 6f;
 	[SerializeField] float GLIDE_SPEED = 0.3f;
+	[SerializeField] Transform GroundPoint;
+
 	public float glideConstant = 2f;
 	public float NORMAL_DRAG;
 
 	bool grounded;
+	public LayerMask groundLayer;
 
 	public enum WingState
 	{
@@ -47,6 +50,7 @@ public class PlayerController : MonoBehaviour {
 
 	float horizontalInput;
 
+
 	void Update()
 	{
 		if(Input.GetButton("Flap"))
@@ -80,7 +84,10 @@ public class PlayerController : MonoBehaviour {
 		//Sideways movement
 		horizontalInput = Input.GetAxisRaw("Horizontal");
 		DetermineDirection(horizontalInput);
-	}	
+
+		if(Physics2D.OverlapCircle(GroundPoint.position, .31f, groundLayer) != null)
+			SetGroundState(true);
+	}
 
 	void FixedUpdate()
 	{
@@ -100,20 +107,6 @@ public class PlayerController : MonoBehaviour {
 			animator.SetBool("Gliding", false);
 			wingState = WingState.Resting;
 		}
-			
-	}
-
-	const int GroundLayer = 11;
-	void OnCollisionEnter2D(Collision2D collision)
-	{
-		if(collision.gameObject.layer == GroundLayer)
-			SetGroundState(true);
-	}
-
-	void OnCollisioneExit2D(Collision2D collision)
-	{
-		if(collision.gameObject.layer == GroundLayer)
-			SetGroundState(false);
 	}
 
 	//Called by animation.
