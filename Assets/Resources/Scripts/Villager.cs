@@ -9,7 +9,9 @@ public class Villager : MonoBehaviour {
 	[SerializeField] private float walkSpeed = 1f;
 	[SerializeField] private float runSpeed = 3f;
 	[SerializeField] private SpriteRenderer bowRenderer;
-	[SerializeField] private float activeRadius = 10f;
+	[SerializeField] private float panicRadius = 15f;
+	[SerializeField] private float swordRadius = 5f;
+	[SerializeField] private float bowRadius = 15f;
 	[SerializeField] private float swordCooldown = 2f;
 	[SerializeField] private float bowCooldown = 3f;
 	[SerializeField] private bool hasDoc = false;
@@ -103,7 +105,8 @@ public class Villager : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collide){
 		if (Mathf.Abs (collide.relativeVelocity.magnitude) > explodeSpeed) {
-			explode();
+			if (collide.gameObject.tag != "Arrow")
+				explode();
 		}
 	}
 
@@ -138,7 +141,7 @@ public class Villager : MonoBehaviour {
 							transform.localEulerAngles = new Vector3(0f, 0f, 0f);
 							rigidbody2D.velocity = Vector2.zero;
 						}
-						if (Vector2.Distance(transform.position, wessbat.transform.position) <= renderer.bounds.size.x * 1.5f) {
+						if (Vector2.Distance(transform.position, wessbat.transform.position) <= swordRadius) {
 							if (!animator.GetBool("Swing") && swordTime <= 0f) {
 								animator.SetTrigger("Swing");
 								swordTime = swordCooldown;

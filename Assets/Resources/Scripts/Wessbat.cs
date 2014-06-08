@@ -5,7 +5,7 @@ public class Wessbat : MonoBehaviour {
 	[SerializeField] float invincibilityTimer = 1f;
 	[SerializeField] int maxHealth = 10;
 	private int curHealth, worksheets;
-	private GameObject pickedUp = null; //object being held
+	private GameObject pickedUp, bloodSplatter = null; //object being held
 	private float invincibility;
 	[SerializeField] float weightScale = 25f;
 
@@ -13,11 +13,26 @@ public class Wessbat : MonoBehaviour {
 		curHealth = maxHealth;
 		worksheets = 0;
 		invincibility = 0f;
+		bloodSplatter = Resources.Load<GameObject>("Prefabs/bloodsplatter");
 	}
 
 	void Start () {
 	
 	}
+
+
+	private IEnumerator flash(float seconds, Color color) {
+		SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+		int steps = 20;
+		Color initcolor = sprite.color; // Transparent white
+		for (int i = 0; i < steps; i++) {
+			sprite.color = Color.Lerp(color, initcolor, (float)i/(float)steps);
+			yield return new WaitForSeconds(seconds/(float)steps);
+		}
+		sprite.color = initcolor;
+	}
+
+
 
 	void Update () {
 		invincibility = Mathf.Max(invincibility - Time.deltaTime, 0f);
@@ -53,16 +68,16 @@ public class Wessbat : MonoBehaviour {
 		default:
 			break;
 		}
-		if (target.gameObject.tag == "Arrow")
-			Destroy(target.gameObject);
 	}
 
 	void OnTriggerEnter2D(Collider2D target) {
 		if (target.tag == "Worksheet") {
 			Utility.worksheets++;
 			Destroy(target.gameObject);
-		} else if (target.tag == "Sword")
+		} else if (target.tag == "Sword") {
+			Instantiate(bloodSplatter, target.transform.position, Quaternion.identity);
 			Damage(1);
+		}
 	}
 
 	void PickUp(GameObject target){		//Pick up the object
@@ -108,6 +123,7 @@ public class Wessbat : MonoBehaviour {
 		if (invincibility <= 0f) {
 			curHealth -= dmg;
 			invincibility = invincibilityTimer;
+			StartCoroutine(flash(invincibilityTimer, Color.red));
 			if (curHealth <= 0)
 				Application.LoadLevel(Application.loadedLevel);
 		}
