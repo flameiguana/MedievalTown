@@ -9,6 +9,8 @@ public class Wessbat : MonoBehaviour {
 	private float invincibility;
 	[SerializeField] float weightScale = 25f;
 
+	public UIProgressBar healthUI; //lol
+
 	void Awake() {
 		curHealth = maxHealth;
 		worksheets = 0;
@@ -124,6 +126,7 @@ public class Wessbat : MonoBehaviour {
 			curHealth -= dmg;
 			invincibility = invincibilityTimer;
 			StartCoroutine(flash(invincibilityTimer, Color.red));
+			healthUI.value = (float)curHealth / (float)maxHealth;
 			if (curHealth <= 0)
 				Application.LoadLevel(Application.loadedLevel);
 		}
