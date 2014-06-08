@@ -18,22 +18,22 @@ AnimationClip:
         value: {x: 0, y: 0, z: -.2916812, w: .95651561}
         inSlope: {x: 0, y: 0, z: 8.21375751, w: -1.55404985}
         outSlope: {x: 0, y: 0, z: 8.21375751, w: -1.55404985}
-        tangentMode: 175
+        tangentMode: -1077482725
       - time: .111111112
         value: {x: 0, y: 0, z: .620958567, w: .783843398}
         inSlope: {x: 0, y: 0, z: 4.96340561, w: -1.67347121}
         outSlope: {x: 0, y: 0, z: 4.96340561, w: -1.67347121}
-        tangentMode: 0
+        tangentMode: -1076480946
       - time: .222222224
         value: {x: 0, y: 0, z: .811297834, w: .584633112}
         inSlope: {x: 0, y: 0, z: 1.05636191, w: -1.19871247}
         outSlope: {x: 0, y: 0, z: 1.05636191, w: -1.19871247}
-        tangentMode: 0
+        tangentMode: -1080463511
       - time: .333333343
         value: {x: 0, y: 0, z: .855705678, w: .51746285}
         inSlope: {x: 0, y: 0, z: .399670571, w: -.604532301}
         outSlope: {x: 0, y: 0, z: .399670571, w: -.604532301}
-        tangentMode: 1093664768
+        tangentMode: -1088765279
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Sword
@@ -46,12 +46,12 @@ AnimationClip:
         value: {x: -.0923244953, y: .386653423, z: 0}
         inSlope: {x: 1.43051147e-05, y: -.14736414, z: 0}
         outSlope: {x: 1.43051147e-05, y: -.14736414, z: 0}
-        tangentMode: 0
+        tangentMode: -1
       - time: .333333343
         value: {x: -.0923197269, y: .337532043, z: 0}
         inSlope: {x: 1.43051147e-05, y: -.14736414, z: 0}
         outSlope: {x: 1.43051147e-05, y: -.14736414, z: 0}
-        tangentMode: 0
+        tangentMode: 1065353216
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: Sword
@@ -380,4 +380,11 @@ AnimationClip:
     path: Sword
     classID: 4
     script: {fileID: 0}
-  m_Events: []
+  m_Events:
+  - time: .333333343
+    functionName: FinishedSwing
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

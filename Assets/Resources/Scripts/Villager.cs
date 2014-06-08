@@ -9,9 +9,13 @@ public class Villager : MonoBehaviour {
 	[SerializeField] private float walkSpeed = 1f;
 	[SerializeField] private float runSpeed = 3f;
 	[SerializeField] private SpriteRenderer bowRenderer;
+
 	[SerializeField] private float panicRadius = 15f;
 	[SerializeField] private float swordRadius = 5f;
 	[SerializeField] private float bowRadius = 15f;
+
+	[SerializeField] private SpriteRenderer swordVisual;
+	[SerializeField] private float activeRadius = 10f;
 	[SerializeField] private float swordCooldown = 2f;
 	[SerializeField] private float bowCooldown = 3f;
 	[SerializeField] private bool hasDoc = false;
@@ -53,6 +57,11 @@ public class Villager : MonoBehaviour {
 		//in shoot animation, so it is disabled during that animation.
 		if(weaponType == WeaponType.Bow)
 			bowRenderer.enabled = true;
+		else if(weaponType == WeaponType.Sword)
+		{
+			swordVisual.enabled = true;
+		}
+			
 	}
 	
 	// Update is called once per frame
@@ -144,6 +153,7 @@ public class Villager : MonoBehaviour {
 						if (Vector2.Distance(transform.position, wessbat.transform.position) <= swordRadius) {
 							if (!animator.GetBool("Swing") && swordTime <= 0f) {
 								animator.SetTrigger("Swing");
+								swordVisual.enabled = false;
 								swordTime = swordCooldown;
 							}
 						}
@@ -187,11 +197,19 @@ public class Villager : MonoBehaviour {
 
 	public void setWeapon(WeaponType weapon) {
 		weaponType = weapon;
-		if (weapon == WeaponType.Sword)
+		if (weapon == WeaponType.Sword){
 			transform.Find("Sword").gameObject.SetActive(true);
+			swordVisual.enabled = true;
+		}
+			
 		else if (weapon == WeaponType.Bow) {
 			transform.Find("Bow").gameObject.SetActive(true);
 			transform.Find("BowArms").gameObject.SetActive(true);
 		}
+	}
+
+	public void FinishedSwing()
+	{
+		swordVisual.enabled = true;
 	}
 }
