@@ -182,9 +182,9 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Poly:
     m_Paths:
     - - {x: .0114536099, y: .132310376}
@@ -266,6 +266,9 @@ MonoBehaviour:
   walkSpeed: 1
   runSpeed: 3
   bowRenderer: {fileID: 21200006}
+  panicRadius: 15
+  swordRadius: 5
+  bowRadius: 15
   swordVisual: {fileID: 21200008}
   activeRadius: 12
   swordCooldown: 2
