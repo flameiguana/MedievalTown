@@ -73,6 +73,12 @@ public class Villager : MonoBehaviour {
 			animator.SetTrigger("Shoot");
 			bowTime = bowCooldown;
 		}*/
+
+		//only play walking animation if vel greater than 0
+		if(Mathf.Abs(rigidbody2D.velocity.x) >= 0.0001f)
+			animator.SetBool("Walking", true);
+		else
+			animator.SetBool("Walking", false);
 	}
 
 	void FixedUpdate() {
@@ -185,7 +191,10 @@ public class Villager : MonoBehaviour {
 				if (rand > 0.993f) {
 					transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y + 180f, 0f);
 				}
-				rigidbody2D.velocity = new Vector2(-walkSpeed * Mathf.Cos(transform.localEulerAngles.y * Mathf.PI / 180f), rigidbody2D.velocity.y);
+				float xVel = -walkSpeed * Mathf.Cos(transform.localEulerAngles.y * Mathf.PI / 180f);
+
+				rigidbody2D.velocity = new Vector2(xVel, rigidbody2D.velocity.y);
+
 			}
 		}
 	}
