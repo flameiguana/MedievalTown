@@ -50,7 +50,10 @@ public class Building : MonoBehaviour {
 		else
 			weapon = Villager.WeaponType.None; // Peasant
 		((GameObject) GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation)).GetComponent<Villager>().setWeapon(weapon);
-
+		if (weapon != Villager.WeaponType.None)
+			GameObject.Find("Wessbat").GetComponent<Sound>().play("spawn", "none");
+		else
+			GameObject.Find("Wessbat").GetComponent<Sound>().play("spawn", "weapon");
 		spawnCD = spawnRate;
 	}
 

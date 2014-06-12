@@ -92,8 +92,10 @@ public class Villager : MonoBehaviour {
 		if(collider.tag == "Player")
 		{
 			batNear = true;
-			if (weaponType == WeaponType.None)
+			if (weaponType == WeaponType.None) {
 				animator.SetBool("Panic", true);
+				GameObject.Find("Wessbat").GetComponent<Sound>().play("panic", "ex");
+			}
 		}
 
 	}

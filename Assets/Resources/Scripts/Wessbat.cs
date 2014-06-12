@@ -82,6 +82,8 @@ public class Wessbat : MonoBehaviour {
 			Damage(1);
 		} else if (target.tag == "Heart") {
 			curHealth = Mathf.Min(maxHealth, curHealth + 1);
+			StartCoroutine(flash(invincibilityTimer, Color.green));
+			healthUI.value = (float)curHealth / (float)maxHealth;
 			target.GetComponent<Heart>().deactivate();
 		}
 	}

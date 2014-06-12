@@ -364,7 +364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 0b3686e9a55a6e94399cd9108bd38c56, type: 2}
       propertyPath: m_RootOrder
-      value: 43
+      value: 42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b3686e9a55a6e94399cd9108bd38c56, type: 2}
@@ -2020,6 +2020,8 @@ GameObject:
   - 114: {fileID: 267326225}
   - 50: {fileID: 267326224}
   - 60: {fileID: 267326223}
+  - 114: {fileID: 267326229}
+  - 82: {fileID: 267326231}
   m_Layer: 0
   m_Name: Wessbat
   m_TagString: Player
@@ -2214,6 +2216,17 @@ Transform:
   - {fileID: 1523607339}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &267326229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 267326222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69da9284572183e41b0d9167b686030c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &267326230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,6 +2250,64 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   wingState: 1
+--- !u!82 &267326231
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 267326222}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &267479487
 Prefab:
   m_ObjectHideFlags: 0
@@ -13100,7 +13171,7 @@ Transform:
   - {fileID: 980950225}
   - {fileID: 1675164082}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 41
 --- !u!54 &1813544621
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15587,7 +15658,7 @@ Transform:
   - {fileID: 662922498}
   - {fileID: 1546449506}
   m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_RootOrder: 42
 --- !u!50 &2004927069
 Rigidbody2D:
   m_ObjectHideFlags: 0
