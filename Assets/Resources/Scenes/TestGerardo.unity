@@ -2838,6 +2838,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: f3309bffbd482244cab2cd37f2b46c94, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f90acd6a1163016459c59402ea1d24d3,
+        type: 3}
+    - target: {fileID: 11400000, guid: f3309bffbd482244cab2cd37f2b46c94, type: 2}
+      propertyPath: weaponType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3309bffbd482244cab2cd37f2b46c94, type: 2}
   m_RootGameObject: {fileID: 857228353}
