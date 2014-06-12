@@ -16,11 +16,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: 5
+  textureFormat: -3
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
@@ -37,20 +37,16 @@ TextureImporter:
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 200
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings:
-  - buildTarget: iPhone
-    maxTextureSize: 1024
-    textureFormat: -2
-    compressionQuality: 50
+  buildTargetSettings: []
   spriteSheet:
     sprites:
     - name: male-peasant_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1432
+        y: 1074
         width: 298
         height: 358
       alignment: 0
@@ -59,7 +55,7 @@ TextureImporter:
     - name: male-peasant_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 298
         y: 1074
         width: 298
         height: 358
@@ -79,6 +75,16 @@ TextureImporter:
     - name: male-peasant_3
       rect:
         serializedVersion: 2
+        x: 298
+        y: 716
+        width: 298
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: male-peasant_4
+      rect:
+        serializedVersion: 2
         x: 0
         y: 358
         width: 298
@@ -86,7 +92,17 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: male-peasant_4
+    - name: male-peasant_5
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 358
+        width: 298
+        height: 358
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: male-peasant_6
       rect:
         serializedVersion: 2
         x: 0
