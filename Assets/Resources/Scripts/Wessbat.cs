@@ -131,4 +131,12 @@ public class Wessbat : MonoBehaviour {
 				Application.LoadLevel(Application.loadedLevel);
 		}
 	}
+
+	public int getHealth() {
+		return curHealth;
+	}
+
+	public int getMax() {
+		return maxHealth;
+	}
 }

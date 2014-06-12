@@ -271,8 +271,8 @@ MonoBehaviour:
   bowRadius: 15
   swordVisual: {fileID: 21200008}
   activeRadius: 12
-  swordCooldown: 2
-  bowCooldown: 3
+  swordCooldown: 4
+  bowCooldown: 6
   hasDoc: 0
   weaponType: 0
 --- !u!212 &21200000
