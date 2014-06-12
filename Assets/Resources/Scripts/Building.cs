@@ -44,13 +44,29 @@ public class Building : MonoBehaviour {
 		if (villagerSpawn > villagerProbabilities[0] + villagerProbabilities[1] + villagerProbabilities[2])
 			weapon = Villager.WeaponType.None; // Until Catapult is in the game
 		else if (villagerSpawn > villagerProbabilities[0] + villagerProbabilities[1])
-			weapon = Villager.WeaponType.Bow;
+			weapon = Villager.WeaponType.Bow; // Bow villager
 		else if (villagerSpawn > villagerProbabilities[0])
-			weapon = Villager.WeaponType.Sword;
+			weapon = Villager.WeaponType.Sword; // Sword villager
 		else
-			weapon = Villager.WeaponType.None;
+			weapon = Villager.WeaponType.None; // Peasant
 		((GameObject) GameObject.Instantiate(villager, new Vector2(transform.localPosition.x + spawnX, transform.localPosition.y + spawnY), transform.rotation)).GetComponent<Villager>().setWeapon(weapon);
 
 		spawnCD = spawnRate;
+	}
+
+	public float getSpawnRate() {
+		return spawnRate;
+	}
+
+	public float getVillagerChance(int index) {
+		return villagerProbabilities[index];
+	}
+
+	public void updateSpawnRate(float rate) {
+		spawnRate = rate;
+	}
+
+	public void updateSpawnChance(int index, float chance) {
+		villagerProbabilities[index] = chance;
 	}
 }

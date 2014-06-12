@@ -12,12 +12,12 @@ public class Heart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		timer = cooldown;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		timer = Mathf.Max(0f, timer - Time.deltaTime);
+
 	}
 
 	public float getTimer() {
@@ -26,15 +26,18 @@ public class Heart : MonoBehaviour {
 
 	public void activate() {
 		renderer.enabled = true;
-		collider.enabled = true;
-		timer = 0f;
+		collider2D.enabled = true;
+		timer = cooldown;
 		levelManager.totalHearts++;
 	}
 
 	public void deactivate() {
 		renderer.enabled = false;
-		collider.enabled = false;
-		timer = cooldown;
+		collider2D.enabled = false;
 		levelManager.totalHearts--;
+	}
+
+	public void decreaseTimer(float amt) {
+		timer = Mathf.Max(0f, timer - amt);
 	}
 }

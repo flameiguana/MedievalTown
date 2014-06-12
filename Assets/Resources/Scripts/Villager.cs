@@ -45,7 +45,7 @@ public class Villager : MonoBehaviour {
 		swordTime = 0f;
 		bowTime = 0f;
 		if (weaponType == WeaponType.Sword)
-			transform.Find("Sword").gameObject.SetActive(true);
+			transform.Find("SwordVisual").gameObject.SetActive(true);
 		else if (weaponType == WeaponType.Bow) {
 			transform.Find("Bow").gameObject.SetActive(true);
 			transform.Find("BowArms").gameObject.SetActive(true);
@@ -122,6 +122,7 @@ public class Villager : MonoBehaviour {
 	public void explode(){
 		Instantiate (deathSplatter, gameObject.transform.position, Quaternion.identity);
 		dropDoc();
+		GameObject.Find("LevelManager").GetComponent<LevelManager>().updateKills();
 		Destroy (gameObject);
 	}
 
@@ -152,6 +153,7 @@ public class Villager : MonoBehaviour {
 						}
 						if (Vector2.Distance(transform.position, wessbat.transform.position) <= swordRadius) {
 							if (!animator.GetBool("Swing") && swordTime <= 0f) {
+								transform.Find("Sword").gameObject.SetActive(true);
 								animator.SetTrigger("Swing");
 								swordVisual.enabled = false;
 								swordTime = swordCooldown;
@@ -191,7 +193,7 @@ public class Villager : MonoBehaviour {
 	}
 
 	private void dropDoc() {
-		if (Random.Range(0f, 1f) > 0.8f)
+		if (Random.Range(0f, 1f) > 0.667f)
 			GameObject.Instantiate(worksheet);
 	}
 

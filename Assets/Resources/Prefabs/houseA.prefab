@@ -54,9 +54,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnRate: 5
   villagerProbabilities:
-  - 50
-  - 30
-  - 20
+  - .5
+  - .300000012
+  - .200000003
   documentProbability: .200000003
   spawnX: -2
   spawnY: -5

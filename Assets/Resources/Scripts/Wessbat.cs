@@ -48,7 +48,7 @@ public class Wessbat : MonoBehaviour {
 		//control scheme goes here
 	}
 
-	// Using this garbage for now
+	/*// Using this garbage for now
 	void OnGUI() {
 		if (curHealth == 0) {
 			KongregateAPI.instance.SubmitStats("Worksheets", Utility.worksheets);
@@ -59,7 +59,7 @@ public class Wessbat : MonoBehaviour {
 		}
 		GUI.Box(new Rect(0f, 0f, 110f, 30f), "Health: " + curHealth);
 		GUI.Box(new Rect(Screen.width - 110f, 0f, 110f, 30f), "Worksheets: " + Utility.worksheets);
-	}
+	}*/
 
 	void OnCollisionStay2D(Collision2D target){
 		switch (target.gameObject.layer) {
@@ -75,10 +75,14 @@ public class Wessbat : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D target) {
 		if (target.tag == "Worksheet") {
 			Utility.worksheets++;
+			GameObject.Find("LevelManager").GetComponent<LevelManager>().updateWorksheets();
 			Destroy(target.gameObject);
 		} else if (target.tag == "Sword") {
 			Instantiate(bloodSplatter, target.transform.position, Quaternion.identity);
 			Damage(1);
+		} else if (target.tag == "Heart") {
+			curHealth = Mathf.Min(maxHealth, curHealth + 1);
+			target.GetComponent<Heart>().deactivate();
 		}
 	}
 
